@@ -21,5 +21,5 @@ EXPOSE 8000
 
 # Command to run Python's built-in simple HTTP server
 #CMD ["python", "-m", "http.server", "8000"]
-CMD ["python", "server.py"]
+CMD ["python", "soap-server2.py"]
 
