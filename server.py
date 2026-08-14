@@ -96,7 +96,7 @@ def scheduler_job():
     print("Background scheduler thread started successfully.")
     while True:
         time.sleep(interval)
-        print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] hello")
+        print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] hello", file=sys.stderr))
 
 def run(server_class=ThreadingHTTPServer, handler_class=SOAPRequestHandler, port=8080):
     # 3. Start the background scheduler thread
