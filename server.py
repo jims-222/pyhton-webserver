@@ -98,7 +98,7 @@ def scheduler_job():
         time.sleep(interval)
         print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] hello")
 
-def run(server_class=ThreadingHTTPServer, handler_class=SOAPRequestHandler, port=8000):
+def run(server_class=ThreadingHTTPServer, handler_class=SOAPRequestHandler, port=8080):
     # 3. Start the background scheduler thread
     # Setting daemon=True ensures this thread terminates instantly when the main server exits.
     bg_thread = threading.Thread(target=scheduler_job, daemon=True)
