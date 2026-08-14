@@ -4,6 +4,7 @@ import socketserver
 import threading
 import time
 import xml.etree.ElementTree as ET
+import sys
 
 # 1. Create a Multi-Threaded HTTP Server class for Python 3.6.8
 class ThreadingHTTPServer(socketserver.ThreadingMixIn, HTTPServer):
