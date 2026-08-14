@@ -1,5 +1,5 @@
 # Use a lightweight official Python image
-FROM python:3.12-slim
+FROM python:3.14-slim
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -11,4 +11,6 @@ COPY . /app
 EXPOSE 8000
 
 # Command to run Python's built-in simple HTTP server
-CMD ["python", "-m", "http.server", "8000"]
+#CMD ["python", "-m", "http.server", "8000"]
+CMD ["python", "server.py"]
+
