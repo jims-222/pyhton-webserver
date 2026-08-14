@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CalculatorService"
+             targetNamespace="http://example.com"
+             xmlns="http://xmlsoap.org"
+             xmlns:soap="http://xmlsoap.orgsoap/"
+             xmlns:tns="http://example.com"
+             xmlns:xsd="http://w3.org">
+
+    <types>
+        <xsd:schema targetNamespace="http://example.com">
+            <xsd:element name="add_numbers">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="num1" type="xsd:int"/>
+                        <xsd:element name="num2" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="add_numbersResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="result" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="add_numbersRequest">
+        <part name="parameters" element="tns:add_numbers"/>
+    </message>
+    <message name="add_numbersResponse">
+        <part name="parameters" element="tns:add_numbersResponse"/>
+    </message>
+
+    <portType name="CalculatorPortType">
+        <operation name="add_numbers">
+            <input message="tns:add_numbersRequest"/>
+            <output message="tns:add_numbersResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="CalculatorBinding" type="tns:CalculatorPortType">
+        <soap:binding style="document" transport="http://xmlsoap.org"/>
+        <operation name="add_numbers">
+            <soap:operation soapAction="http://example.com/add_numbers"/>
+            <input><soap:body use="literal"/></input>
+            <output><soap:body use="literal"/></output>
+        </operation>
+    </binding>
+
+    <service name="CalculatorService">
+        <port name="CalculatorPort" binding="tns:CalculatorBinding">
+            <soap:address location="http://localhost:8000/"/>
+        </port>
+    </service>
+</definitions>
